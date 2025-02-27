@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reg_log.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <title>Создание услуги</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Больница Г.А.Ш.</div>
+            <ul>
+                <li><a href="{{ url_for('get_home') }}">На главную</a></li>
+                <li><a href="{{ url_for('get_reg') }}">Регистрация</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Вызвать врача на дом</h1>
+            <form action="/calling" method="POST" enctype="multipart/form-data">
+                <div >
+                    <label for="doctor">Выберите врача:</label>
+                    <select name="doctor" id="doctor">
+                        {% for post in posts %}
+                            <option value="{{ post[1] }}">{{ post[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="day">Выберите день недели:</label>
+                    <select name="day" id="day">
+                        <option value="monday">Понедельник</option>
+                        <option value="tuesday">Вторник</option>
+                        <option value="wednesday">Среда</option>
+                        <option value="thursday">Четверг</option>
+                        <option value="friday">Пятница</option>
+                        <option value="saturday">Суббота</option>
+                        <option value="sunday">Воскресенье</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="time">Выберите время:</label>
+                    <select name="time" id="time">
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                        <option value="18:00">18:00</option>
+                        <option value="19:00">19:00</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="search-button">Вызвать</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Больница Г.А.Ш. Все права защищены.</p>
+    </footer>
+</body>
+</html>

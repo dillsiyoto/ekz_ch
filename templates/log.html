@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reg_log.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <title>Log Page</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Больница Г.А.Ш.</div>
+            <ul>
+                <li><a href="{{ url_for('get_home') }}">На главную</a></li>
+                <li><a href="{{ url_for('get_reg') }}">Регистрация</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    <section id="hero">
+        <div class="hero-content">
+            <form action="" method="post">
+                <div class="input-group">
+                    <label for="username" class="input-label">Введите логин</label>
+                    <input type="text" id="username" name="login" class="input-field" placeholder="Логин" required>
+                </div>
+                <div class="input-group">
+                    <label for="password" class="input-label">Введите пароль</label>
+                    <input type="password" id="password" name="password" class="input-field" placeholder="Пароль" required>
+                </div>
+                
+                <button type="submit" class="submit-button">Войти</button>
+                {% if error %}
+                    <p style="color: white; text-align: center;">{{ error }}</p>
+                {% endif %}
+            </form>
+        </div>
+    </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Больница Г.А.Ш. Все права защищены.</p>
+    </footer>
+</body>
+</html>

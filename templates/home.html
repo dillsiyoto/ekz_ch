@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Больница Г.А.Ш.</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_home.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- <div id="cookie-banner">
+        <img src="{{ url_for('static', filename='images/cookies.jpg') }}" alt="Cookie Image">
+        <p>Мы используем файлы cookie для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с нашей политикой конфиденциальности</p>
+        <button onclick="acceptCookies()">Принять</button>
+        <button onclick="declineCookies()">Отказаться</button>
+    </div> -->
+    <header>
+        <nav>
+            <div class="logo">Больница Г.А.Ш.</div>
+            <ul>
+                <div class="search-container">
+                    <form action="{{ url_for('get_search') }}" method="POST">
+                        <input type="text" name="search" placeholder="Поиск..." required>
+                        <button class="search-button">Поиск</button>
+                    </form>
+                </div>
+                <li><a href="{{ url_for('get_calling') }}">Вызвать врача на дом</a></li>
+                <li><a href="{{ url_for('get_create_post') }}">Добавить услугу</a></li>
+                <li><a href="{{ url_for('get_log') }}">Вход</a></li>
+                <li><a href="{{ url_for('get_reg') }}">Регистрация</a></li>
+                <li><a href="{{ url_for('get_profile') }}">Профиль</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Добро пожаловать в нашу больницу</h1>
+            <p>Мы предоставляем качественную медицинскую помощь как и в нашей больнице, так и с выездом к вам</p>
+            <a href="#services" class="btn">Наши услуги</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2>Вызов врача на дом</h2>
+        <a href="{{ url_for('get_up') }}"><button class="sort-button">По возврастанию</button></a>
+        <a href="{{ url_for('get_down') }}"><button class="sort-button">По убыванию</button></a>
+        <div class="service-grid">
+            {% for post in spisok %}
+            <div class="service-card">
+                <h3 class="post-title">{{ post[1] }}</h3>  
+                <!-- <p class="post-description">Описание: {{ post[2] }}</p>  -->
+                <p class="post-price">Цена: {{ post[3] }} тг</p>
+                <a href="{{ url_for('get_details', id = post[0]) }}"><button class="submit-button">Подробнее</button></a>
+            </div>
+        {% endfor %}
+        </div>
+    </section>
+
+    <section id="doctors">
+        <h2>Объявления</h2>
+        <p>День открытых дверей в Кожно-венерологическом центре!</p>
+        <p>27 февраля - Дeнь ocвeдoмлённocти oб aнocмии (Anosmia Awareness Dаy). В нашей больнице пройдет мероприятие с консультациями ЛОР врачей</p>
+        <p>Как защитить себя от лишая?</p>
+        <p>1 и 2 марта в нашем городе бесплатно и без направления будет консультировать дерматовенеролог областного кожно - венерологоческого центра Лекарствин Фармацевт Ангинатович</p>
+        <p>В физиоотделение ОКБ требуются массажисты</p>
+    </section>
+
+    <section id="contacts">
+        <h2>Контакты</h2>
+        <p>Адрес: ул. Денсаулык, 10, г. Караганда</p>
+        <p>Телефон: +7 (777) 174 - 17 - 04</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Больница Г.А.Ш. Все права защищены.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

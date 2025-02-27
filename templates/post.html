@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reg_log.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <title>Log Page</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Больница Г.А.Ш.</div>
+            <ul>
+                <li><a href="{{ url_for('get_home') }}">На главную</a></li>
+                <li><a href="{{ url_for('get_reg') }}">Регистрация</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    <section id="hero">
+        <div class="hero-content">
+            <h2>
+                {{ post[1] }}
+            </h2>               
+            <h4 style="padding: 0 100px;">
+                {{ post[2] }}
+            </h4>
+            <h3>
+                {{ post[3] }} тг.
+            </h3>
+            {% if post[4] != "upload_images/None" %}
+                <img src="{{ post[4] }}" alt="Фото" style="max-width:500px;">
+            {% endif %}
+            <a href="{{ url_for('get_calling')}}"><button class="search-button">Вызов на дом</button></a>
+        </div>
+    </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Больница Г.А.Ш. Все права защищены.</p>
+    </footer>
+</body>
+</html>

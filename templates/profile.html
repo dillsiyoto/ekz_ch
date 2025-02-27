@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reg_log.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <title>Log Page</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Больница Г.А.Ш.</div>
+            <ul>
+                <li><a href="{{ url_for('get_home') }}">На главную</a></li>
+                <li><a href="{{ url_for('get_reg') }}">Регистрация</a></li>
+                <li><a href="{{ url_for('get_logout')}}">Выйти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="profile">
+            <div class="profile-header">
+                <h1>Добро пожаловать, {{ login }}!</h1>
+            </div>
+    
+                <div class="profile-actions">
+                    
+                </div>
+            </div>
+    
+            <section id="services">
+                <h2>Выши назначенные вызовы:</h2>
+                <div class="service-grid">
+                    {% for call in call_list %}
+                    <div class="service-card">
+                        <h3 class="post-title">{{ call[1] }}</h3>  
+                        <p class="post-description">День: {{ call[2] }}</p> 
+                        <p class="post-price">Время: {{ call[3] }} </p>
+                    </div>
+                {% endfor %}
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Больница Г.А.Ш. Все права защищены.</p>
+    </footer>
+</body>
+</html>
