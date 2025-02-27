@@ -34,6 +34,8 @@
             {% if post[4] != "upload_images/None" %}
                 <img src="{{ post[4] }}" alt="Фото" style="max-width:500px;">
             {% endif %}
+            <a href="{{ url_for('get_home')}}"><button class="search-button">Назад</button></a>
+            <a href="{{ url_for('get_redact', id=post[0]) }}"><button class="search-button">Редактировать услугу</button></a>
             <a href="{{ url_for('get_calling')}}"><button class="search-button">Вызов на дом</button></a>
         </div>
     </section>
